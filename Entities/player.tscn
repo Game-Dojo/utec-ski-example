@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ci7rm3oemnnu8"]
+
+[ext_resource type="Script" uid="uid://6vg07fughoui" path="res://Scripts/player.gd" id="1_gb1tc"]
+[ext_resource type="Texture2D" uid="uid://k3f30sduqjs6" path="res://Assets/tilemap.png" id="1_tcnsb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5h6n"]
+radius = 7.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1602379962]
+script = ExtResource("1_gb1tc")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=923794031]
+texture_filter = 1
+position = Vector2(0, 7)
+texture = ExtResource("1_tcnsb")
+region_enabled = true
+region_rect = Rect2(190, 123, 10, 8)
+
+[node name="Visuals" type="Sprite2D" parent="." unique_id=1350229089]
+texture_filter = 1
+texture = ExtResource("1_tcnsb")
+region_enabled = true
+region_rect = Rect2(170, 85, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1998428696]
+shape = SubResource("CircleShape2D_n5h6n")
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1309214223]
+position = Vector2(-14, 153)

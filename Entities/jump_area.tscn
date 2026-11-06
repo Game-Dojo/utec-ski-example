@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bvaml74rdge35"]
+
+[ext_resource type="Script" uid="uid://lkvlou5e1oa1" path="res://Scripts/jump_area.gd" id="1_xewtv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5h6n"]
+size = Vector2(28, 9)
+
+[node name="JumpArea" type="Area2D" unique_id=1760314048]
+script = ExtResource("1_xewtv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1136058840]
+shape = SubResource("RectangleShape2D_n5h6n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
