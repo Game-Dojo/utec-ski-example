@@ -29,10 +29,14 @@ func _physics_process(_delta: float) -> void:
 func jump() -> void:
 	shape.set_deferred("disabled", true)
 	
+	var tw = create_tween()
+	tw.tween_property(visuals, "scale", Vector2.ONE * 1.2, 0.7 )
+	tw.tween_property(visuals, "scale", Vector2.ONE, 0.2 )
+	
 	if jump_tween: jump_tween.kill()
 	jump_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	jump_tween.tween_property(visuals, "position:y", -10, 0.7)
-	jump_tween.tween_property(visuals, "position:y", 0, 0.3)
+	jump_tween.tween_property(visuals, "position:y", 0, 0.2)
 	await jump_tween.finished
 	
 	shape.set_deferred("disabled", false)
