@@ -7,8 +7,6 @@ const GRAVITY = 0.2
 const MOVE_SPEED = 1
 
 var movement = 0
-var is_jumping = false
-
 var jump_tween
 
 func _process(_delta: float) -> void:
@@ -29,9 +27,6 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func jump() -> void:
-	if is_jumping: return
-	is_jumping = true
-	
 	shape.set_deferred("disabled", true)
 	
 	if jump_tween: jump_tween.kill()
@@ -41,4 +36,3 @@ func jump() -> void:
 	await jump_tween.finished
 	
 	shape.set_deferred("disabled", false)
-	is_jumping = false
