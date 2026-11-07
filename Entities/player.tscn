@@ -3,11 +3,53 @@
 [ext_resource type="Script" uid="uid://6vg07fughoui" path="res://Scripts/player.gd" id="1_gb1tc"]
 [ext_resource type="Texture2D" uid="uid://k3f30sduqjs6" path="res://Assets/tilemap.png" id="1_tcnsb"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb1tc"]
+atlas = ExtResource("1_tcnsb")
+region = Rect2(170, 85, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd3k7"]
+atlas = ExtResource("1_tcnsb")
+region = Rect2(170, 85, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taegk"]
+atlas = ExtResource("1_tcnsb")
+region = Rect2(187, 85, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n5h6n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb1tc")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd3k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taegk")
+}],
+"loop": 1,
+"name": &"Run",
+"speed": 2.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n5h6n"]
 radius = 7.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1602379962]
 script = ExtResource("1_gb1tc")
+
+[node name="Trail" type="Sprite2D" parent="." unique_id=1775170071]
+texture_filter = 1
+position = Vector2(-1, -3)
+texture = ExtResource("1_tcnsb")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(186, 68, 16, 16)
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=923794031]
 texture_filter = 1
@@ -16,11 +58,11 @@ texture = ExtResource("1_tcnsb")
 region_enabled = true
 region_rect = Rect2(190, 123, 10, 8)
 
-[node name="Visuals" type="Sprite2D" parent="." unique_id=1350229089]
+[node name="Visuals" type="AnimatedSprite2D" parent="." unique_id=716476719]
 texture_filter = 1
-texture = ExtResource("1_tcnsb")
-region_enabled = true
-region_rect = Rect2(170, 85, 16, 16)
+sprite_frames = SubResource("SpriteFrames_n5h6n")
+animation = &"Run"
+autoplay = "Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1998428696]
 position = Vector2(0, 1)
